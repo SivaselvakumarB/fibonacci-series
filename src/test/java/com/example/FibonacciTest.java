@@ -8,22 +8,22 @@ class FibonacciTest {
     @Test
     void testFibonacciSeries() {
         long[] expected = {0, 1, 1, 2, 3, 5, 8};
-        long[] actual = Fibonacci.generateSeries(7);
-
-        assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, Fibonacci.generate(7));
     }
 
     @Test
     void testSingleTerm() {
-        long[] expected = {0};
-        long[] actual = Fibonacci.generateSeries(1);
+        assertArrayEquals(new long[]{0}, Fibonacci.generate(1));
+    }
 
-        assertArrayEquals(expected, actual);
+    @Test
+    void testZeroTerms() {
+        assertArrayEquals(new long[]{}, Fibonacci.generate(0));
     }
 
     @Test
     void testInvalidInput() {
         assertThrows(IllegalArgumentException.class,
-                () -> Fibonacci.generateSeries(0));
+                () -> Fibonacci.generate(-1));
     }
 }
